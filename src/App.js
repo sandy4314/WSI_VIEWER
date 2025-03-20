@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import LeftPanel from './components/LeftPanel';
+import HubView from './components/HubView';
+import ZoomView from './components/ZoomView';
 
 function App() {
+  const [zoomArea, setZoomArea] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <LeftPanel />
+      <div className="main-content">
+        <HubView zoomArea={zoomArea} />
+        <ZoomView setZoomArea={setZoomArea} />
+      </div>
     </div>
   );
 }
